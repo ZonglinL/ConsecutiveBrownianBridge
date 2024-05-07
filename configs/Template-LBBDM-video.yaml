@@ -1,0 +1,138 @@
+# Latent Brownian Bridge Diffusion Model Template(Latent Space)
+runner: "BBDMRunner"
+training:
+  n_epochs: 400
+  n_steps: 1000000
+  save_interval: 1
+  sample_interval: 1
+  validation_interval: 1
+  accumulate_grad_batches: 1
+
+testing:
+  clip_denoised: False
+  sample_num: 1
+
+data:
+  dataset_name: 'UCF' 
+  dataset_type: 'Interpolation'
+  dataset_config:
+    dataset_path: 'dataset_path'
+    image_size: 256 
+    channels: 3
+    to_normal: True
+    flip: True
+    cat: False
+    aug_noise: False
+    aug_cut: False
+    eval: 'UCF' ## options {"UCF", "MidB", "DAVIS","FILM"}
+    mode: 'extreme' ## options{"easy","medium","hard","extreme"}
+  train:
+    batch_size: 64
+    shuffle: True
+  val: 
+    batch_size: 64 
+    shuffle: False 
+  test:
+    batch_size: 64
+    # shuffle: False
+
+model:
+  model_name: "LBBDM-f32" # part of result path
+  model_type: "LBBDM" # specify a module
+  latent_before_quant_conv: False
+  normalize_latent: False
+  only_load_latent_mean_std: False
+  # model_load_path:  # model checkpoint path
+  # optim_sche_load_path:  # optimizer scheduler checkpoint path
+
+  EMA:
+    use_ema: True
+    ema_decay: 0.995
+    update_ema_interval: 8 # step
+    start_ema_step: 3000
+ 
+  CondStageParams:
+    n_stages: 4
+    in_channels: 3
+    out_channels: 3
+
+  VQGAN:
+    params:
+      ckpt_path: 'results/VQGAN/vimeo_new.ckpt'
+      embed_dim: 3
+      n_embed: 16384
+
+      ddconfig:
+        double_z: False
+        z_channels: 8
+        resolution: 256
+        in_channels: 3
+        out_ch: 3
+        ch: 64
+        ch_mult: !!python/tuple
+          - 1
+          - 2
+          - 2
+          - 2
+          - 4
+        num_res_blocks: 1
+        cond_type: max_cross_attn
+        attn_type: max
+        attn_resolutions: [ 16 ]
+        dropout: 0.0
+        load_VFI: /scratch/zl3958/VLPR/net_220.pth
+
+      lossconfig:
+        target: torch.nn.Identity
+    cond_stage_config: __is_first_stage__
+
+  BB:
+    optimizer:
+      weight_decay: 0.
+      optimizer: 'Adam'
+      lr: 1.e-4
+      beta1: 0.9
+
+    lr_scheduler:
+      factor: 0.5
+      patience: 3000
+      threshold: 0.0001
+      cooldown: 3000
+      min_lr: 5.e-7
+
+    params:
+      mt_type: 'linear' # options {'linear', 'sin'}
+      objective: 'grad' # options {'grad', 'noise', 'ysubx','BB'}
+      loss_type: 'l1' # options {'l1', 'l2'}
+
+      skip_sample: True
+      sample_type: 'linear' # options {"linear", "sin"}
+      sample_step: 50
+
+      num_timesteps: 1000 # timesteps
+      eta: 1.0 # DDIM reverse process eta
+      max_var: 1.0 # maximum variance
+
+      UNetParams:
+        image_size: 8
+        in_channels: 9
+        model_channels: 128
+        out_channels: 3
+        num_res_blocks: 2
+        attention_resolutions: !!python/tuple
+          - 8
+          - 4
+          - 2
+        channel_mult: !!python/tuple
+          - 1
+          - 2
+          - 4
+        conv_resample: True
+        dims: 2
+        num_head_channels: 32
+        use_scale_shift_norm: True
+        resblock_updown: True
+        use_max_self_attn: True # replace all full self-attention with MaxViT
+        context_dim:
+        dropout: 0
+        condition_key: "first_stage" # options {"SpatialRescaler", "first_stage", "nocond"} 
