@@ -2,12 +2,11 @@
 
 <div align="center">
   
-[![arXiv](https://img.shields.io/badge/arXiv%20paper-xxxx.xxxx-b31b1b.svg)](https://arxiv.org/abs/xxxx.xxxx)&nbsp;
-</div>
+[Zonglin Lyu](https://zonglinl.github.io/), [Ming Li](https://liming-ai.github.io/), [Jianbo Jiao](https://jianbojiao.com/), [Chen Chen](https://www.crcv.ucf.edu/chenchen/)
 
-<p align="center" style="font-size:1em;">
-  <a href="https://zonglinl.github.io/videointerp/">Frame Interpolation with Consecutive Brownian Bridge</a>
-</p>
+[![Website shields.io](https://img.shields.io/website?url=http%3A//poco.is.tue.mpg.de)](https://zonglinl.github.io/videointerp/) [![YouTube Badge](https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube)](https://youtu.be/X3xcYm-qajM)  [![arXiv](https://img.shields.io/badge/arXiv-xxxx.xxxx-00ff00.svg)](https://arxiv.org/)
+
+</div>
 
 <p align="center">
 <img src="images/Teaser.jpg" width=95%>
@@ -47,3 +46,15 @@ The weights of of our trained model can be downloaded <a href="https://zonglinl.
 ## Training and Evaluating
 
 This part will be released after paper is accepted
+
+## Ackknowledgement
+
+We greatfully appreaciate the source code from [BBDM](https://github.com/xuekt98/BBDM), [LDMVFI](https://github.com/danier97/LDMVFI), and [VFIformer](https://github.com/dvlab-research/VFIformer)
+
+## Citation
+
+If you find this repository helpful for your research, please cite:
+
+```
+Citation coming soon
+```
