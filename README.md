@@ -27,7 +27,7 @@ Please install necessary packages in requirements.txt, then run:
 ```
 python interpolate.py --resume_model path_to_model_weights --frame0 path_to_the_previous_frame --frame1 path_to_the_next_frame
 ```
-
+This will interpolate 7 frames in between, you may modify the code to interpolate different number of frames with a bisection like methods
 The weights of of our trained model can be downloaded <a href="https://zonglinl.github.io/videointerp/">here</a>.
 
 ## Training and Evaluating
