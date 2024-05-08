@@ -30,6 +30,10 @@ def parse_args_and_config():
     parser.add_argument('--port', type=str, default='12355', help='DDP master port')
 
     parser.add_argument('--resume_model', type=str, default=None, help='model checkpoint')
+
+    parser.add_argument('--frame0', type=str, default=None, help='previous frame')
+    parser.add_argument('--frame1', type=str, default=None, help='next frame')
+    
     parser.add_argument('--resume_optim', type=str, default=None, help='optimizer checkpoint')
 
     parser.add_argument('--max_epoch', type=int, default=None, help='optimizer checkpoint')
@@ -76,15 +80,17 @@ def main():
     nconfig, dconfig = parse_args_and_config()
     args = nconfig.args
     model = LatentBrownianBridgeModel(nconfig.model)
-    state_dict_pth = 'your_state_dict_path'
+    state_dict_pth = args.resume_model
+    frame0_path = args.frame0
+    frame1_path = args.frame1
     model_states = torch.load(state_dict_pth, map_location='cpu')
     model.load_state_dict(model_states['model'])
     model.eval()
     model = model.cuda()
     
     transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]) #outptu tensor in [-1,1]
-    frame0 = transform(Image.open('I0')).cuda().unsqueeze(0)
-    frame1 = transform(Image.open('I1')).cuda().unsqueeze(0)
+    frame0 = transform(Image.open(frame0_path)).cuda().unsqueeze(0)
+    frame1 = transform(Image.open(frame1_path)).cuda().unsqueeze(0)
     I4 = interpolate(frame0,frame1,model)
     I2 = interpolate(frame0,I4,model)
     I1 = interpolate(frame0,I2,model)
