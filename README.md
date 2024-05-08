@@ -14,8 +14,18 @@
 <p>
 
 ## Overview
-We design the Consecutive Brownian Bridge Model that transits among three frames specifically for the frame interpolation task and takes advangtage of optical flow estimation in the autoencoder part.
+We design the Consecutive Brownian Bridge Diffusion that transits among three frames specifically for the frame interpolation task and takes advangtage of optical flow estimation in the autoencoder part. **The Consecutive Brownian Bridge Diffusion** reduce cumulative variance during sampling, which is prefered in VFI becuase there is a *deterministic groundtruth* rather than *a diverse set of images*. **The autoencoder with flow estimation** improves the visual quality of frames decoded from the latent space.
 
 <p align="center">
-<img src="images/Teaser.jpg" width=95%>
+<img src="images/overview.jpg" width=95%>
 <p>
+
+## Inference
+
+Please install necessary packages in requirements.txt, then run:
+
+```
+python interpolate.py
+```
+
+The weights of of our trained model can be downloaded <a href="https://zonglinl.github.io/videointerp/">here</a>. After downloading, change the path of state dictionary in interpolate.py to your downloaded path and modify the path of two neighboring frames to your customized path.
