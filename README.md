@@ -25,7 +25,11 @@ We design the Consecutive Brownian Bridge Diffusion that transits among three fr
 Please install necessary packages in requirements.txt, then run:
 
 ```
-python interpolate.py
+python interpolate.py --resume_model path_to_model_weights --frame0 path_to_the_previous_frame --frame1 path_to_the_next_frame
 ```
 
-The weights of of our trained model can be downloaded <a href="https://zonglinl.github.io/videointerp/">here</a>. After downloading, change the path of state dictionary in interpolate.py to your downloaded path and modify the path of two neighboring frames to your customized path.
+The weights of of our trained model can be downloaded <a href="https://zonglinl.github.io/videointerp/">here</a>.
+
+## Training and Evaluating
+
+This part will be released after paper is accepted
