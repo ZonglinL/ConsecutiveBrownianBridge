@@ -12,3 +12,10 @@
 <p align="center">
 <img src="images/Teaser.jpg" width=95%>
 <p>
+
+## Overview
+We design the Consecutive Brownian Bridge Model that transits among three frames specifically for the frame interpolation task and takes advangtage of optical flow estimation in the autoencoder part.
+
+<p align="center">
+<img src="images/Teaser.jpg" width=95%>
+<p>
