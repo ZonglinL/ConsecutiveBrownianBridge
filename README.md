@@ -14,11 +14,25 @@
 <p>
 
 ## Overview
-We design the Consecutive Brownian Bridge Diffusion that transits among three frames specifically for the frame interpolation task and takes advangtage of optical flow estimation in the autoencoder part. **The Consecutive Brownian Bridge Diffusion** reduce cumulative variance during sampling, which is prefered in VFI becuase there is a *deterministic groundtruth* rather than *a diverse set of images*. **The autoencoder with flow estimation** improves the visual quality of frames decoded from the latent space.
+We takes advangtage of optical flow estimation in the autoencoder part and design the Consecutive Brownian Bridge Diffusion that transits among three frames specifically for the frame interpolation task. (a)**The autoencoder with flow estimation** improves the visual quality of frames decoded from the latent space. (b) **The Consecutive Brownian Bridge Diffusion** reduce cumulative variance during sampling, which is prefered in VFI becuase there is a *deterministic groundtruth* rather than *a diverse set of images*. (c) During inference, the decoder recieves estimated latent features from the Consecutive Brownian Bridge Diffusion.
 
 <p align="center">
 <img src="images/overview.jpg" width=95%>
 <p>
+
+## Quantitative Results
+Our method achieves state-of-the-art performance in LPIPS/FloLPIPS/FID among all recent SOTAs. 
+<p align="center">
+<img src="images/quant.jpg" width=95%>
+<p>
+
+## Qualitative Results
+Our method achieves state-of-the-art performance in LPIPS/FloLPIPS/FID among all recent SOTAs. 
+<p align="center">
+<img src="images/qualadd-1.jpg" width=95%>
+<p>
+
+For more visualizations, please refer to our <a href="https://zonglinl.github.io/videointerp/">project page</a>.
 
 ## Inference
 
