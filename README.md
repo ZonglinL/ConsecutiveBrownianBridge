@@ -23,13 +23,13 @@ We takes advangtage of optical flow estimation in the autoencoder part and desig
 ## Quantitative Results
 Our method achieves state-of-the-art performance in LPIPS/FloLPIPS/FID among all recent SOTAs. 
 <p align="center">
-<img src="images/quant.jpg" width=95%>
+<img src="images/quant.png" width=95%>
 <p>
 
 ## Qualitative Results
 Our method achieves state-of-the-art performance in LPIPS/FloLPIPS/FID among all recent SOTAs. 
 <p align="center">
-<img src="images/qualadd-1.jpg" width=95%>
+<img src="images/qualadd-1.png" width=95%>
 <p>
 
 For more visualizations, please refer to our <a href="https://zonglinl.github.io/videointerp/">project page</a>.
