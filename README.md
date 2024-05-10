@@ -4,7 +4,7 @@
   
 [Zonglin Lyu](https://zonglinl.github.io/), [Ming Li](https://liming-ai.github.io/), [Jianbo Jiao](https://jianbojiao.com/), [Chen Chen](https://www.crcv.ucf.edu/chenchen/)
 
-[![Website shields.io](https://img.shields.io/website?url=http%3A//poco.is.tue.mpg.de)](https://zonglinl.github.io/videointerp/) [![YouTube Badge](https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube)](https://youtu.be/X3xcYm-qajM)  [![arXiv](https://img.shields.io/badge/arXiv-xxxx.xxxx-00ff00.svg)](https://arxiv.org/)
+[![Website shields.io](https://img.shields.io/website?url=http%3A//poco.is.tue.mpg.de)](https://zonglinl.github.io/videointerp/) [![YouTube Badge](https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube)](https://youtu.be/X3xcYm-qajM)  [![arXiv](https://img.shields.io/badge/arXiv-2405.05953-00ff00.svg)](https://arxiv.org/abs/2405.05953)
 
 </div>
 
@@ -56,5 +56,12 @@ We greatfully appreaciate the source code from [BBDM](https://github.com/xuekt98
 If you find this repository helpful for your research, please cite:
 
 ```
-Citation coming soon
+@misc{lyu2024frame,
+      title={Frame Interpolation with Consecutive Brownian Bridge Diffusion}, 
+      author={Zonglin Lyu and Ming Li and Jianbo Jiao and Chen Chen},
+      year={2024},
+      eprint={2405.05953},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
