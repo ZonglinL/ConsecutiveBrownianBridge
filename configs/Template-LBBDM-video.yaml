@@ -80,7 +80,7 @@ model:
         attn_type: max
         attn_resolutions: [ 16 ]
         dropout: 0.0
-        load_VFI: /scratch/zl3958/VLPR/net_220.pth
+        load_VFI: ## your path here!
 
       lossconfig:
         target: torch.nn.Identity
