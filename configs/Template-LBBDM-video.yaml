@@ -58,7 +58,7 @@ model:
 
   VQGAN:
     params:
-      ckpt_path: 'results/VQGAN/vimeo_new.ckpt'
+      ckpt_path: 'results/VQGAN/vimeo_new.ckpt' ## change it to your own ckpt of VQ Model
       embed_dim: 3
       n_embed: 16384
 
