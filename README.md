@@ -35,13 +35,13 @@ For more visualizations, please refer to our <a href="https://zonglinl.github.io
 
 ## Inference
 
-Please install necessary packages in requirements.txt. Please leave the load_VFI in the config file as empty, otherwise you need to download the model weights of VFIformer from <a href="https://drive.google.com/drive/folders/140bDl6LXPMlCqG8DZFAXB3IBCvZ7eWyv"> here</a>. You need to change the path of load_VFI to the path of downloaded weights, then run:
+Please install necessary packages in requirements.txt. Please leave the load_VFI and ckpt_path in the config file as empty, otherwise you need to download the model weights of VFIformer from <a href="https://drive.google.com/drive/folders/140bDl6LXPMlCqG8DZFAXB3IBCvZ7eWyv"> here</a> and VQ Model from the link below. You need to change the path of load_VFI and ckpt_path to the path of downloaded weights, then run:
 
 ```
 python interpolate.py --resume_model path_to_model_weights --frame0 path_to_the_previous_frame --frame1 path_to_the_next_frame
 ```
 This will interpolate 7 frames in between, you may modify the code to interpolate different number of frames with a bisection like methods
-The weights of of our trained model can be downloaded <a href="https://drive.google.com/file/d/1Z5kPMdYiC4CSvl1mrQLz9MqtJx7RjvrK/view?usp=drive_link">here</a>.
+The weights of of our trained model can be downloaded <a href="https://drive.google.com/file/d/1Z5kPMdYiC4CSvl1mrQLz9MqtJx7RjvrK/view?usp=drive_link">here</a>. The VQ Model is available <a href="https://drive.google.com/file/d/1Z5kPMdYiC4CSvl1mrQLz9MqtJx7RjvrK/view?usp=drive_link">here</a>
 
 ## Training and Evaluating
 
