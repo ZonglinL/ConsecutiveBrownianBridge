@@ -41,7 +41,7 @@ Please install necessary packages in requirements.txt. Please leave the *load_VF
 python interpolate.py --resume_model path_to_model_weights --frame0 path_to_the_previous_frame --frame1 path_to_the_next_frame
 ```
 This will interpolate 7 frames in between, you may modify the code to interpolate different number of frames with a bisection like methods
-The weights of of our trained model can be downloaded <a href="https://drive.google.com/file/d/1Z5kPMdYiC4CSvl1mrQLz9MqtJx7RjvrK/view?usp=sharing">here</a>. The VQ Model is available <a href="">herhttps://drive.google.com/file/d/1V8WS7bZe_RTCtyYZ6ZFkur8sHbKvVkT8/view?usp=sharing</a>
+The weights of of our trained model can be downloaded <a href="https://drive.google.com/file/d/1Z5kPMdYiC4CSvl1mrQLz9MqtJx7RjvrK/view?usp=sharing">here</a>. The VQ Model is available <a href="">herhttps://drive.google.com/file/d/1V8WS7bZe_RTCtyYZ6ZFkur8sHbKvVkT8/view?usp=sharing> here</a>
 
 ## Training and Evaluating
 
