@@ -35,7 +35,7 @@ For more visualizations, please refer to our <a href="https://zonglinl.github.io
 
 ## Inference
 
-Please install necessary packages in requirements.txt. Please leave the load_VFI and ckpt_path in the config file as empty, otherwise you need to download the model weights of VFIformer from <a href="https://drive.google.com/drive/folders/140bDl6LXPMlCqG8DZFAXB3IBCvZ7eWyv"> here</a> and VQ Model from the link below. You need to change the path of load_VFI and ckpt_path to the path of downloaded weights, then run:
+Please install necessary packages in requirements.txt. Please leave the *load_VFI* and *ckpt_path* in the config file as empty, otherwise you need to download the model weights of VFIformer from <a href="https://drive.google.com/drive/folders/140bDl6LXPMlCqG8DZFAXB3IBCvZ7eWyv"> here</a> and VQ Model from the link below. You need to change the path of load_VFI and ckpt_path to the path of downloaded weights, then run:
 
 ```
 python interpolate.py --resume_model path_to_model_weights --frame0 path_to_the_previous_frame --frame1 path_to_the_next_frame
