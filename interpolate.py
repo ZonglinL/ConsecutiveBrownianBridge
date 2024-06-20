@@ -8,7 +8,7 @@ import numpy as np
 import torchvision.transforms as transforms
 from PIL import Image
 
-from utils import dict2namespace, get_runner, namespace2dict
+from utils import dict2namespace, namespace2dict
 import torch.multiprocessing as mp
 import torch.distributed as dist
 from model.BrownianBridge.LatentBrownianBridgeModel import LatentBrownianBridgeModel
