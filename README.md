@@ -47,7 +47,7 @@ The weights of of our trained model can be downloaded <a href="https://drive.goo
 
 This part will be released after paper is accepted
 
-## Ackknowledgement
+## Acknowledgement
 
 We greatfully appreaciate the source code from [BBDM](https://github.com/xuekt98/BBDM), [LDMVFI](https://github.com/danier97/LDMVFI), and [VFIformer](https://github.com/dvlab-research/VFIformer)
 
