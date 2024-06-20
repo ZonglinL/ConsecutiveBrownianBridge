@@ -100,7 +100,7 @@ class LatentBrownianBridgeModel(BrownianBridgeModel):
             img_next, x0_recon_next = self.bi_p_sample(x_t=imgs_next[-1],cond = imgs_prev[-1], y=z, 
             context=context_y, i=i, clip_denoised=clip_denoised,is_z = True)
             ## sample one step from the next/current frames condition on previous (at same t)
-            
+            """
             if self.next_frame:
                 t = torch.full((x_t.shape[0],), self.steps[i], device=x_t.device, dtype=torch.long)
                 img_prev = self.self.q_sample(y, z, t)
@@ -110,7 +110,9 @@ class LatentBrownianBridgeModel(BrownianBridgeModel):
                 context=context_z, i=i, clip_denoised=clip_denoised,is_z = False)
                 ## otherwise we sample from the previous frame
                 ## at this time if we want to add qkv condition, it should be next frame
-
+            """
+            img_prev = img_next
+            x0_recon_prev = x0_recon_next
             imgs_next.append(img_next)
             imgs_prev.append(img_prev)
             one_step_imgs_prev.append(x0_recon_prev)
