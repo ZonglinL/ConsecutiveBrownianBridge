@@ -153,16 +153,12 @@ class LatentBrownianBridgeModel(BrownianBridgeModel):
                             smoothing=0.01):
                 with torch.no_grad():
                     out_next = self.decode(one_step_temp_next[i].detach(),y,z,prev_phi,next_phi)
-                    out_prev = self.decode(one_step_temp_prev[i].detach(), y,z,prev_phi,next_phi)
-
+                    
+                    #out_prev = self.decode(one_step_temp_prev[i].detach(), y,z,prev_phi,next_phi)
+                    out_prev = out_next
                 one_step_samples_next.append(out_next.to('cpu'))
                 one_step_samples_prev.append(out_prev.to('cpu'))
 
-                with torch.no_grad():
-                    out_next = self.decode(temp_next[i].detach(), y,z,prev_phi,next_phi)
-                    out_prev = self.decode(temp_prev[i].detach(), y,z,prev_phi,next_phi)
-                out_samples_next.append(out_next.to('cpu'))
-                out_samples_prev.append(out_prev.to('cpu'))
 
         
             return out_samples_next,out_samples_prev, one_step_samples_next,one_step_samples_prev
@@ -173,8 +169,8 @@ class LatentBrownianBridgeModel(BrownianBridgeModel):
             """
             with torch.no_grad():
                 out_next = self.decode(temp_next[-1].detach(), y,z,prev_phi,next_phi)
-                out_prev = self.decode(temp_prev[-1].detach(), y,z,prev_phi,next_phi)
-
+                #out_prev = self.decode(temp_prev[-1].detach(), y,z,prev_phi,next_phi)
+                out_prev = out_next
             return out_next,out_prev
 
     @torch.no_grad()
