@@ -16,7 +16,7 @@ data:
   dataset_name: 'UCF' 
   dataset_type: 'Interpolation'
   dataset_config:
-    dataset_path: 'dataset_path'
+    dataset_path: 'dataset_path' ## path to your dataset
     image_size: 256 
     channels: 3
     to_normal: True
@@ -102,7 +102,7 @@ model:
 
     params:
       mt_type: 'linear' # options {'linear', 'sin'}
-      objective: 'grad' # options {'grad', 'noise', 'ysubx','BB'}
+      objective: 'grad' # options {'grad', 'noise', 'ysubx','BB'} 
       loss_type: 'l1' # options {'l1', 'l2'}
 
       skip_sample: True
