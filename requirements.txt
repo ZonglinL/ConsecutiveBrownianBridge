@@ -17,9 +17,6 @@ scipy==1.11.1
 -e git+https://github.com/CompVis/taming-transformers.git@3ba01b241669f5ade541ce990f7650a3b8f65318#egg=taming_transformers
 tensorboard==2.16.2
 timm==0.9.16
-torch==2.1.0+cu118
-torchaudio==2.1.0+cu118
 torchmetrics==0.11.4
 torchsummary==1.5.1
-torchvision==0.16.0+cu118
 tqdm==4.66.2
