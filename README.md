@@ -33,18 +33,74 @@ Our method achieves state-of-the-art performance in LPIPS/FloLPIPS/FID among all
 
 For more visualizations, please refer to our <a href="https://zonglinl.github.io/videointerp/">project page</a>.
 
+## Trained Models
+
+The weights of of our trained model can be downloaded <a href="https://drive.google.com/file/d/1Z5kPMdYiC4CSvl1mrQLz9MqtJx7RjvrK/view?usp=sharing">here</a>.
+
+The VQ Model (the autoencoder part of the above model) is available <a href="https://drive.google.com/file/d/1V8WS7bZe_RTCtyYZ6ZFkur8sHbKvVkT8/view?usp=sharing"> here</a>.
+
+
 ## Inference
 **Please comment line 6 in ```utils.py``` before we provide training codes!**
 
 Please install necessary packages in requirements.txt. 
 
-**Please leave the *load_VFI* and *ckpt_path* in the config file as empty**, otherwise you need to download the model weights of VFIformer from <a href="https://drive.google.com/drive/folders/140bDl6LXPMlCqG8DZFAXB3IBCvZ7eWyv"> here</a> and VQ Model from the link below. You need to change the path of load_VFI and ckpt_path to the path of downloaded weights, then run:
+**Please leave the *load_VFI* and *ckpt_path* in the config file as empty**, otherwise you need to download the model weights of VFIformer from <a href="https://drive.google.com/drive/folders/140bDl6LXPMlCqG8DZFAXB3IBCvZ7eWyv"> here</a> and our VQ Model. You need to change the path of *load_VFI* and *ckpt_path* to the path of downloaded VFIformer and our VQGAN respectively.
+
+Please download our trained model.
+
+Then run:
 
 ```
 python interpolate.py --resume_model path_to_model_weights --frame0 path_to_the_previous_frame --frame1 path_to_the_next_frame
 ```
 This will interpolate 7 frames in between, you may modify the code to interpolate different number of frames with a bisection like methods
-The weights of of our trained model can be downloaded <a href="https://drive.google.com/file/d/1Z5kPMdYiC4CSvl1mrQLz9MqtJx7RjvrK/view?usp=sharing">here</a>. The VQ Model is available <a href="https://drive.google.com/file/d/1V8WS7bZe_RTCtyYZ6ZFkur8sHbKvVkT8/view?usp=sharing"> here</a>
+
+
+## Prepare datasets
+
+### Training set
+[[Vimeo-90K]](http://toflow.csail.mit.edu/) 
+
+### Evaluation set
+
+[[Middlebury]](https://vision.middlebury.edu/flow/data/) | [[UCF101]](https://drive.google.com/file/d/0B7EVK8r0v71pdHBNdXB6TE1wSTQ/view?resourcekey=0-r6ihCy20h3kbgZ3ZdimPiA) | [[DAVIS]](https://drive.google.com/file/d/1tcOoF5DkxJcX7_tGaKgv1B1pQnS7b-xL/view) | [[SNU-FILM]](https://myungsub.github.io/CAIN/)
+
+You should download *other-color-towframes.zip* and *other-gt-interp.zip* in Middlebury.
+
+The DAVIS dataset is preprocessed with the dataset code from [LDMVFI](https://github.com/danier97/LDMVFI/blob/main/ldm/data/testsets.py) and saved in a structured file. Please feel free to directly use it, or you may use the dataloader from LDMVFI.
+
+Data should be in the following structure:
+
+```
+└──── <data directory>/
+    ├──── MidB/
+    |   ├──── input/
+    |   |   ├──── Beanbags/
+    |   |   ├──── ...
+    |   |   └──── Walking/
+    |   └──── gt/
+    |       ├──── Beanbags/
+    |       ├──── ...
+    |       └──── Walking/
+    ├──── UCF/
+    |   ├──── 1/
+    |   ├──── 11/
+    |   ├──── ...
+    |   └──── 3781/
+    ├──── DAVIS/
+    |   ├──── bear/
+    |   ├──── ...
+    |   └──── walking/
+    ├──── SNU-FILM/
+    |   ├──── test-easy.txt
+    |   ├──── ...
+    |   └──── test/...
+    └──── vimeo_triplet/
+        ├──── sequences/
+        ├──── tri_testlist.txt
+        └──── tri_trainlist.txt
+```
 
 ## Training and Evaluating
 
