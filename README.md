@@ -34,7 +34,7 @@ Our method achieves state-of-the-art performance in LPIPS/FloLPIPS/FID among all
 For more visualizations, please refer to our <a href="https://zonglinl.github.io/videointerp/">project page</a>.
 
 ## Inference
-
+**Please comment line 6 in ```utils.py``` before we provide training codes!**
 Please install necessary packages in requirements.txt. **Please leave the *load_VFI* and *ckpt_path* in the config file as empty**, otherwise you need to download the model weights of VFIformer from <a href="https://drive.google.com/drive/folders/140bDl6LXPMlCqG8DZFAXB3IBCvZ7eWyv"> here</a> and VQ Model from the link below. You need to change the path of load_VFI and ckpt_path to the path of downloaded weights, then run:
 
 ```
