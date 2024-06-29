@@ -33,7 +33,11 @@ Our method achieves state-of-the-art performance in LPIPS/FloLPIPS/FID among all
 
 For more visualizations, please refer to our <a href="https://zonglinl.github.io/videointerp/">project page</a>.
 
-## Package Installation
+## Preparation
+
+### Package Installation
+
+To install necessary packages, run:
 
 ```
 pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
@@ -41,8 +45,7 @@ pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https
 pip install -r requirements.txt
 ```
 
-
-## Trained Models
+### Trained Model
 
 The weights of of our trained model can be downloaded <a href="https://drive.google.com/file/d/1Z5kPMdYiC4CSvl1mrQLz9MqtJx7RjvrK/view?usp=sharing">here</a>.
 
