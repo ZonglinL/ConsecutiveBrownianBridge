@@ -13,7 +13,7 @@ testing:
   sample_num: 1
 
 data:
-  dataset_name: 'UCF' 
+  dataset_name: 'UCF' ## this folder stores training logs
   dataset_type: 'Interpolation'
   dataset_config:
     dataset_path: '.../data' ## path to your data directory
