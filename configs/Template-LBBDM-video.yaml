@@ -16,7 +16,7 @@ data:
   dataset_name: 'UCF' 
   dataset_type: 'Interpolation'
   dataset_config:
-    dataset_path: '.../data' ## path to your dataset
+    dataset_path: '.../data' ## path to your data directory
     image_size: 256 
     channels: 3
     to_normal: True
