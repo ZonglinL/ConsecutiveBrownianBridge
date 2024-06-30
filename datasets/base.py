@@ -28,10 +28,9 @@ def cut(img, high,stride):
 
 class Vimeo(Dataset):
     ## interpolation dataset for UCF
-    def __init__(self, image_size=(256, 256), flip=True, to_normal=True,aug_noise=False,aug_cut=False):
+    def __init__(self, image_size=(256, 256), flip=True, to_normal=True):
         self.image_size = image_size
-        self.aug_noise = aug_noise
-        self.aug_cut = aug_cut
+        self.root = "data/vimeo_triplet"
         f = open(os.path.join(self.root,'tri_trainlist.txt'), "r")
         imlist = f.read()
         self.image_dirs = imlist.split('\n')[:-1]
@@ -87,7 +86,6 @@ class Vimeo(Dataset):
             x,y,z = vert_flip(x),vert_flip(y),vert_flip(z)
     
         if np.random.rand() < 0.5:
-
             return x,y,z
         else:
             return x,z,y
@@ -106,7 +104,7 @@ class UCF(Dataset):
                     break
 
         self._length = len(self.image_dirs) ## folder of the images
-        self.to_normal = to_normal # 是否归一化到[-1, 1]
+        self.to_normal = to_normal # # if normalize to [-1, 1] nor not
         self.flip = flip ## if flip or not
 
     def __len__(self):
@@ -160,7 +158,7 @@ class MidB(Dataset):
             self.gt_dirs.append(os.path.join('data/MidB/other-gt-interp',c))
 
         self._length = len(classes) ## folder of the images
-        self.to_normal = to_normal # 是否归一化到[-1, 1]
+        self.to_normal = to_normal # if normalize to [-1, 1] nor not
         self.flip = flip ## if flip or not
 
     def __len__(self):
@@ -209,7 +207,7 @@ class DAVIS(Dataset):
                     break
 
         self._length = len(self.image_dirs) ## folder of the images
-        self.to_normal = to_normal # 是否归一化到[-1, 1]
+        self.to_normal = to_normal# if normalize to [-1, 1] nor not
         self.flip = flip ## if flip or not
 
     def __len__(self):
@@ -260,7 +258,7 @@ class FILM(Dataset):
         self.image_dirs = im_list.split('\n')[:-1]
 
         self._length = len(self.image_dirs) ## folder of the images
-        self.to_normal = to_normal # 是否归一化到[-1, 1]
+        self.to_normal = to_normal # if normalize to [-1, 1] nor not
         self.flip = flip ## if flip or not
 
     def __len__(self):

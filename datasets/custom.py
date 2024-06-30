@@ -21,10 +21,7 @@ class Interpolation(Dataset):
         self.flip = dataset_config.flip if stage == 'train' else False
         self.to_normal = dataset_config.to_normal
         if stage == 'train':
-            if dataset_config.cat:
-                self.imgs = Cat(self.image_size,self.flip,self.to_normal,dataset_config.aug_noise,dataset_config.aug_cut)
-            else:
-                self.imgs = Vimeo(self.image_size,self.flip,self.to_normal,dataset_config.aug_noise,dataset_config.aug_cut)
+            self.imgs = Vimeo(self.image_size,self.flip,self.to_normal,dataset_config.aug_noise,dataset_config.aug_cut)
         elif stage == 'test':
             if dataset_config.eval == 'UCF':
                 self.imgs = UCF(self.image_size,self.flip,self.to_normal)
@@ -34,8 +31,6 @@ class Interpolation(Dataset):
                 self.imgs = DAVIS(self.image_size,self.flip,self.to_normal)
             elif dataset_config.eval == 'FILM':
                 self.imgs = FILM(self.image_size,self.flip,self.to_normal,dataset_config.mode)
-            elif dataset_config.eval == 'VIMEO':
-                self.imgs = Vimeo_test(self.image_size,self.flip,self.to_normal)
         else:
             self.imgs = UCF(self.image_size,self.flip,self.to_normal)
 
