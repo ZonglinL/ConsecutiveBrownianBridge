@@ -20,19 +20,20 @@ class Interpolation(Dataset):
         self.image_size = (dataset_config.image_size, dataset_config.image_size)
         self.flip = dataset_config.flip if stage == 'train' else False
         self.to_normal = dataset_config.to_normal
+        self.root = dataset_config.dataset_path
         if stage == 'train':
-            self.imgs = Vimeo(self.image_size,self.flip,self.to_normal,dataset_config.aug_noise,dataset_config.aug_cut)
+            self.imgs = Vimeo(self.image_size,self.flip,self.to_normal,self.root)
         elif stage == 'test':
             if dataset_config.eval == 'UCF':
-                self.imgs = UCF(self.image_size,self.flip,self.to_normal)
+                self.imgs = UCF(self.image_size,self.flip,self.to_normal,self.root)
             elif dataset_config.eval == 'MidB':
-                self.imgs = MidB(self.image_size,self.flip,self.to_normal)
+                self.imgs = MidB(self.image_size,self.flip,self.to_normal,self.root)
             elif dataset_config.eval == 'DAVIS':
-                self.imgs = DAVIS(self.image_size,self.flip,self.to_normal)
+                self.imgs = DAVIS(self.image_size,self.flip,self.to_normal,self.root)
             elif dataset_config.eval == 'FILM':
-                self.imgs = FILM(self.image_size,self.flip,self.to_normal,dataset_config.mode)
+                self.imgs = FILM(self.image_size,self.flip,self.to_normal,dataset_config.mode,self.root)
         else:
-            self.imgs = UCF(self.image_size,self.flip,self.to_normal)
+            self.imgs = UCF(self.image_size,self.flip,self.to_normal,self.root)
 
     def __len__(self):
         return len(self.imgs)
