@@ -1175,4 +1175,6 @@ class FlowDecoderWithResidual(nn.Module):
         if back:
             out = out.clamp_(min = 0, max = 1)
             out = out*2 - 1 ## -1,1
+        else:
+            out = out.clamp_(min=-1,max = 1)
         return out
