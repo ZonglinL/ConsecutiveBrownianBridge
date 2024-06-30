@@ -28,9 +28,9 @@ def cut(img, high,stride):
 
 class Vimeo(Dataset):
     ## interpolation dataset for UCF
-    def __init__(self, image_size=(256, 256), flip=True, to_normal=True):
+    def __init__(self, image_size=(256, 256), flip=True, to_normal=True,root = None):
         self.image_size = image_size
-        self.root = "data/vimeo_triplet"
+        self.root = os.path.join(root,"vimeo_triplet")
         f = open(os.path.join(self.root,'tri_trainlist.txt'), "r")
         imlist = f.read()
         self.image_dirs = imlist.split('\n')[:-1]
@@ -94,10 +94,11 @@ class Vimeo(Dataset):
 
 class UCF(Dataset):
     ## interpolation dataset for UCF
-    def __init__(self, image_size=(256, 256), flip=False, to_normal=True):
+    def __init__(self, image_size=(256, 256), flip=False, to_normal=True,root = None):
         self.image_size = image_size
         self.image_dirs = []
-        for root,dirs,files in os.walk('data/UCF'):
+        self.root = os.path.join(root,"UCF")
+        for root,dirs,files in os.walk(self.root):
             for file in files:
                 if 'png' in file or 'jpg' in file:
                     self.image_dirs.append(root)
@@ -146,16 +147,19 @@ class UCF(Dataset):
 
 
 class MidB(Dataset):
-    ## interpolation dataset for UCF
-    def __init__(self, image_size=(256, 256), flip=False, to_normal=True):
+    ## interpolation dataset for Middlebury
+    def __init__(self, image_size=(256, 256), flip=False, to_normal=True,root = None):
         self.image_size = image_size
         self.cond_dirs = []
         self.gt_dirs = []
-        classes = os.listdir('data/MidB/other-data')
+        self.root = os.path.join(root,"MidB")
+        self.other_data = os.path.join(self.root,"other-data")
+        self.other_gt = os.path.join(self.root,"other-gt-interp")
+        classes = os.listdir(self.other_data)
         
         for c in classes:
-            self.cond_dirs.append(os.path.join('data/MidB/other-data',c))
-            self.gt_dirs.append(os.path.join('data/MidB/other-gt-interp',c))
+            self.cond_dirs.append(os.path.join(self.other_data,c))
+            self.gt_dirs.append(os.path.join(self.other_gt,c))
 
         self._length = len(classes) ## folder of the images
         self.to_normal = to_normal # if normalize to [-1, 1] nor not
@@ -196,11 +200,12 @@ class MidB(Dataset):
 
 
 class DAVIS(Dataset):
-    ## interpolation dataset for UCF
-    def __init__(self, image_size=(256, 256), flip=False, to_normal=True):
+    ## interpolation dataset for DAVIS
+    def __init__(self, image_size=(256, 256), flip=False, to_normal=True,root = None):
         self.image_size = image_size
         self.image_dirs = []
-        for root,dirs,files in os.walk('data/DAVIS'):
+        self.root = os.path.join(root,"DAVIS")
+        for root,dirs,files in os.walk(self.root):
             for file in files:
                 if 'png' in file or 'jpg' in file:
                     self.image_dirs.append(root)
@@ -248,10 +253,11 @@ class DAVIS(Dataset):
 
 
 class FILM(Dataset):
-    ## interpolation dataset for UCF
-    def __init__(self, image_size=(256, 256), flip=False, to_normal=True,mode = 'easy'):
+    ## interpolation dataset for SNU-FILM
+    def __init__(self, image_size=(256, 256), flip=False, to_normal=True,mode = 'easy',root=None):
         self.image_size = image_size
-        root = 'data/SNU-FILM'
+        root = os.path.join(root,"SNU-FILM")
+        self.root = root
         file = os.path.join(root,f'test-{mode}.txt')
         f = open(file, "r")
         im_list = f.read()
@@ -266,6 +272,9 @@ class FILM(Dataset):
         return self._length
 
     def load_image(self,img_path,transform):
+
+        root_out = os.path.split(self.root) ## directory that contains data/...
+        img_path = os.path.join(root_out,img_path)
 
         try:
             image = Image.open(img_path)
