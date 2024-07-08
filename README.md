@@ -114,6 +114,9 @@ Data should be in the following structure:
 
 ## Training and Evaluating
 
+**If you comment line 6 in ```utils.py```, please uncomment it!**
+
+
 Please edit the configs file in ```configs/Template-LBBDM-video.yaml```! 
 
 Change data.dataset_config.dataset_path to your path to dataset (the path until ```<data directory>``` above)
