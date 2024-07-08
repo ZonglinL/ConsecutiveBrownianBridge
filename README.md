@@ -114,6 +114,49 @@ Data should be in the following structure:
 
 ## Training and Evaluating
 
+Please edit the configs file in ```configs/Template-LBBDM-video.yaml```! During training, you may edit training
+
+
+### Train your autoencoder
+
+Please refer to [LDMVFI](https://github.com/danier97/LDMVFI) for training. To train the autoencoder, you need to replace some codes in LDMVFI with our versions:
+
+1. We provide our config file in ```autoenc/vqflow-f32.yaml```, please replace the ```configs/autoencoder/vqflow-f32.yaml``` in LDMVFI with this file.
+
+2. Please also replace ```ldm/data/bvi_vimeo.py``` in LDMVFI with our provided ```autoenc/bvi_vimeo.py```. We only includes Vimeo90K triplets for training.
+
+3. Please replace the class FlowDecoderWithResidual (line 354) in ```ldm/modules/diffusionmodules/model.py``` in LDMVFI with our Decoder in ```model/BrownianBridge/base/modules/diffusionmodules/model.py```(line 968)
+
+### Train the UNet
+
+Please run:
+
+```
+python3 main.py --config configs/Template-LBBDM-video.yaml --train --save_top --gpu_ids 0
+```
+
+You may use ```--resume_model /path/to/ckpt``` to resume training. The model will be saved in ```results/dataset_name in configs file/model_name in configs file```. For simplicity, you can leave *dataset_name* and *model_name* unchanged as UCF and LBBDM-f32 during training.
+
+### Evaluate
+
+Please run:
+
+```
+python3 main.py --configs/Template-LBBDM-video.yaml --gpu_ids 0 --resume_model results/vimeo_unet.pth --sample_to_eval
+
+python3 batch_to_entire.py --latent --dataset dataset_name --step 50
+
+python3 copy_GT.py --latent --dataset dataset_name
+
+python3 eval.py --latent --dataset dataset_name --step 50
+```
+
+The ```main.py``` will print PSNR/SSIM in the terminal, and save sampled images in ```results/dataset_name```. The dataset_name is the one shown in ```configs/Template-LBBDM-video.yaml```.  You will need to distinguish different difficulty level for SNU-FILM when you evaluating SNU-FILM. For example, in our implementation, we choose from {"UCF", "MidB", "DAVIS","FILM_{difficulty level}"}.
+
+vimeo_unet is provided as our trained model. /your/dataset is
+
+
+
 This part will be released after paper is accepted
 
 ## Acknowledgement
