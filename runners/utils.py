@@ -5,7 +5,6 @@ from PIL import Image
 from datetime import datetime
 from torchvision.utils import make_grid, save_image
 from Register import Registers
-from datasets.custom import CustomSingleDataset, CustomAlignedDataset, CustomInpaintingDataset
 from datasets.base import UCF,Vimeo
 
 
