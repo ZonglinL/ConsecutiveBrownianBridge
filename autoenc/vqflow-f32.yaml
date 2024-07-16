@@ -41,7 +41,6 @@ data:
       params:
         db_dir: ...../data/vimeo_triplet ## path to vimeo_triplet
         crop_sz: [256,256]
-        iter: True
     validation:
       target: ldm.data.bvi_vimeo.Vimeo90k_triplet
       params:
