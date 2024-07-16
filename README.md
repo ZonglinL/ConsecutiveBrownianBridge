@@ -114,7 +114,6 @@ Data should be in the following structure:
 
 ## Training and Evaluating
 
-<!--
 
 **If you comment line 6 in ```utils.py```, please uncomment it!**
 
@@ -173,9 +172,6 @@ The ```main.py``` will print PSNR/SSIM in the terminal. The dataset_name is the 
 
 vimeo_unet is provided as our trained model. /your/dataset is
 
--->
-
-This part will be released after paper is accepted
 
 ## Acknowledgement
 
