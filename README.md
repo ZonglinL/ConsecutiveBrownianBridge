@@ -112,6 +112,8 @@ Data should be in the following structure:
         └──── tri_trainlist.txt
 ```
 
+You can either rename folders to our structures, or change the the codes.
+
 ## Training and Evaluating
 
 
