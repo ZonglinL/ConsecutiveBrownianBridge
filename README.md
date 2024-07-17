@@ -172,7 +172,7 @@ python3 eval.py --latent --dataset dataset_name --step 50
 
 The ```main.py``` will print PSNR/SSIM in the terminal. The dataset_name is the one shown in ```configs/Template-LBBDM-video.yaml```. 
 
-vimeo_unet is provided as our trained model. /your/dataset is
+vimeo_unet is provided as our trained model.
 
 
 ## Acknowledgement
