@@ -184,12 +184,10 @@ We greatfully appreaciate the source code from [BBDM](https://github.com/xuekt98
 If you find this repository helpful for your research, please cite:
 
 ```
-@misc{lyu2024frame,
-      title={Frame Interpolation with Consecutive Brownian Bridge Diffusion}, 
-      author={Zonglin Lyu and Ming Li and Jianbo Jiao and Chen Chen},
-      year={2024},
-      eprint={2405.05953},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{lyu2024frame,
+  title={Frame Interpolation with Consecutive Brownian Bridge Diffusion},
+  author={Lyu, Zonglin and Li, Ming and Jiao, Jianbo and Chen, Chen},
+  journal={arXiv preprint arXiv:2405.05953},
+  year={2024}
 }
 ```
