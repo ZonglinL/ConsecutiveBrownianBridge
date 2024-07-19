@@ -134,7 +134,7 @@ Please refer to [LDMVFI](https://github.com/danier97/LDMVFI) for training. To tr
 
 2. Please also replace ```ldm/data/bvi_vimeo.py``` in LDMVFI with our provided ```autoenc/bvi_vimeo.py```. We only includes Vimeo90K triplets for training.
 
-3. Please replace the class FlowDecoderWithResidual (line 354) in ```ldm/modules/diffusionmodules/model.py``` in LDMVFI with our Decoder in ```model/BrownianBridge/base/modules/diffusionmodules/model.py```(line 968)
+3. Please replace the class FlowDecoderWithResidual (line 354) and FIEncoder (line) in ```ldm/modules/diffusionmodules/model.py``` in LDMVFI with our Decoder in ```model/BrownianBridge/base/modules/diffusionmodules/model.py```(line 968)
 
 After training, you should move the saved VQModel as ```results/VQGAN/vimeo_new.ckpt```. You are also free to change model.VQGAN.params.ckpt_path in ```configs/Template-LBBDM-video.yaml``` to fit your path of ckpt.
 
