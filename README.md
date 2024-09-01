@@ -161,7 +161,7 @@ Change data.dataset_name to create a folder to save sampled images. You will nee
 Then please run:
 
 ```
-python3 main.py --configs/Template-LBBDM-video.yaml --gpu_ids 0 --resume_model /path/to/vimeo_unet --sample_to_eval
+python3 main.py --config configs/Template-LBBDM-video.yaml --gpu_ids 0 --resume_model /path/to/vimeo_unet --sample_to_eval
 
 python3 batch_to_entire.py --latent --dataset dataset_name --step 50
 
