@@ -273,7 +273,7 @@ class FILM(Dataset):
 
     def load_image(self,img_path,transform):
 
-        root_out = os.path.split(self.root) ## directory that contains data/...
+        root_out = os.path.split(self.root)[0] ## directory that contains data/...
         img_path = os.path.join(root_out,img_path)
 
         try:
