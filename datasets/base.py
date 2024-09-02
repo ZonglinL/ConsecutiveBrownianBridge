@@ -273,14 +273,16 @@ class FILM(Dataset):
 
     def load_image(self,img_path,transform):
 
-        root_out = os.path.split(self.root)[0] ## directory that contains data/...
+        root_out = os.path.split(self.root)[0] 
+        root_out = os.path.split(root_out)[0]## directory that contains data/...
         img_path = os.path.join(root_out,img_path)
 
         try:
             image = Image.open(img_path)
         except:
+            print("======================")
             print(img_path)
-
+            print("======================")
         if not image.mode == 'RGB':
             image = image.convert('RGB')
 
