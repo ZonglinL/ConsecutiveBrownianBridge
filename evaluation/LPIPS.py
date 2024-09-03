@@ -9,7 +9,8 @@ loss_fn = lpips.LPIPS(net='alex', version='0.1').to(torch.device('cuda:0'))
 
 @torch.no_grad()
 def calc_LPIPS(data_dir, gt_dir, num_samples=1):
-    dir_list = os.listdir(data_dir)
+    dir_list = os.listdir(gt_dir)
+    print(dir_list)
     dir_list.sort()
 
     total = len(dir_list)
@@ -25,7 +26,6 @@ def calc_LPIPS(data_dir, gt_dir, num_samples=1):
             current_lpips_distance = loss_fn.forward(gt_img, img_calc,normalize = True)
             total_lpips_distance = total_lpips_distance + current_lpips_distance
     avg_lpips_distance = total_lpips_distance / (total * num_samples)
-    print(data_dir)
     print(f'lpips_distance: {avg_lpips_distance}')
     return avg_lpips_distance
 

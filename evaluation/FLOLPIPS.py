@@ -11,7 +11,7 @@ eval_metric = Flolpips().to(device)
 
 @torch.no_grad()
 def calc_FLOLPIPS(data_dir, gt_dir,cond_dir, num_samples=1):
-    dir_list = os.listdir(data_dir)
+    dir_list = os.listdir(gt_dir)
     dir_list.sort()
 
     total = len(dir_list)
