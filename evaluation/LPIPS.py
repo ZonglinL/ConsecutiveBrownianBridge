@@ -23,7 +23,7 @@ def calc_LPIPS(data_dir, gt_dir, num_samples=1):
             img_name = os.path.join(os.path.join(data_dir,f'{j}', f'sample_from_next{str(i)}.png'))
 
             img_calc = lpips.im2tensor(lpips.load_image(img_name)).to(torch.device('cuda:0'))
-            current_lpips_distance = loss_fn.forward(gt_img, img_calc,normalize = True)
+            current_lpips_distance = loss_fn.forward(gt_img, img_calc,normalize = False)
             total_lpips_distance = total_lpips_distance + current_lpips_distance
     avg_lpips_distance = total_lpips_distance / (total * num_samples)
     print(f'lpips_distance: {avg_lpips_distance}')
