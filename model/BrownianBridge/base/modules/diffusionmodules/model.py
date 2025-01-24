@@ -1014,8 +1014,6 @@ class FlowDecoderWithResidual(nn.Module):
         self.refinenet = vfi.refinenet
         for p in self.flownet.parameters():
             p.requires_grad = False
-        for p in self.refinenet.parameters():
-            p.requires_grad = False
 
         # compute in_ch_mult, block_in and curr_res at lowest res
         in_ch_mult = (1,)+tuple(ch_mult) # (1,1,2,4)
