@@ -89,7 +89,7 @@ Data should be in the following structure:
     |   |   ├──── Beanbags/
     |   |   ├──── ...
     |   |   └──── Walking/
-    |   └──── other-gt/
+    |   └──── other-gt-interp/
     |       ├──── Beanbags/
     |       ├──── ...
     |       └──── Walking/
