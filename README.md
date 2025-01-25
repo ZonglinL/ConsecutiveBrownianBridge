@@ -85,11 +85,11 @@ Data should be in the following structure:
 ```
 └──── <data directory>/
     ├──── MidB/
-    |   ├──── input/
+    |   ├──── other-data/
     |   |   ├──── Beanbags/
     |   |   ├──── ...
     |   |   └──── Walking/
-    |   └──── gt/
+    |   └──── other-gt/
     |       ├──── Beanbags/
     |       ├──── ...
     |       └──── Walking/
